@@ -1,9 +1,12 @@
 
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import s from 'classnames';
 
 function App() {
+
+
+
   const [counter, setCounter] = useState(1)
   const [myInput, setMyInput] = useState({
     id: 1,
@@ -20,6 +23,11 @@ function App() {
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
   const [isMouseOver, setIsMouseOver] = useState(false);
 
+  const inputRef = useRef(null); 
+
+  useEffect(() => {
+    inputRef.current.focus(); 
+  }, [myArray]);
 
 
   const handleChange = (e) => {
@@ -54,7 +62,6 @@ function App() {
   }
 
 
-
   const handleMouseUp = (e) => {
     e.preventDefault();
 
@@ -62,7 +69,7 @@ function App() {
 
       setMyArray([...myArray.map(item => {
         if (item.id == counter) {
-          return { ...item, isRightAnswer: true, answer: inputValue}
+          return { ...item, isRightAnswer: true, answer: inputValue }
         }
         return item
       }), {
@@ -78,8 +85,7 @@ function App() {
     }
 
     else {
-      console.log('uncorrect anwer bbbbb');
-
+      console.log('uncorrect answer bbbbb');
       setMyArray(myArray.map((item) => {
         if (item.id == counter) {
           return { ...item, isRightAnswer: false }
@@ -109,6 +115,7 @@ function App() {
                 type='number'
                 id={element.id}
                 onChange={(e) => handleChange(e)}
+                ref={inputRef}
 
               >
               </input >
@@ -117,14 +124,14 @@ function App() {
         })}
 
         <button className={isDisabledButton || !inputValue ?
-         "button_disabled" :
-         isMouseDown && isCorrectAnswer ?
-         s('button', 'button_right') : 
-         isMouseDown && !isCorrectAnswer ?
-         s('button', 'button_wrong') :
-         isMouseOver ? 
-         s('button', 'button_over') :
-         'button'}
+          "button_disabled" :
+          isMouseDown && isCorrectAnswer ?
+            s('button', 'button_right') :
+            isMouseDown && !isCorrectAnswer ?
+              s('button', 'button_wrong') :
+              isMouseOver ?
+                s('button', 'button_over') :
+                'button'}
           disabled={(isDisabledButton || !inputValue) ? true : false}
           // style={buttonColor}
           type='submit'

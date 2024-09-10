@@ -20,12 +20,9 @@
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid #A9A9A9;
-  /* background-color: cadetblue; */
+  background-color: cadetblue;
 }
 
-/* .button:hover {
-  background-color: #AFEEEE;
-} */
 
 .button_over {
   background-color: #AFEEEE;;

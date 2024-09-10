@@ -1,0 +1,98 @@
+.App {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(192, 188, 188);
+  padding-top: 50px;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.button {
+  width: 70px;
+  height: 30px;
+  margin-top: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #A9A9A9;
+  /* background-color: cadetblue; */
+}
+
+/* .button:hover {
+  background-color: #AFEEEE;
+} */
+
+.button_over {
+  background-color: #AFEEEE;;
+}
+
+.button_right {
+  background-color: #228B22;
+}
+
+
+.button_wrong {
+  background-color: #FA8072;
+}
+
+.button_disabled {
+  cursor: default;
+  background-color: #A9A9A9;
+  width: 70px;
+  height: 30px;
+  margin-top: 50px;
+  border-radius: 5px;
+}
+
+.multiplication {
+  margin: 0;
+  padding-right: 10px;
+}
+
+.multiplication_container {
+  margin: 0;
+  display: flex;
+}
+
+
+.example {
+  display: flex;
+}
+
+.example_new {
+  display: flex;
+  opacity: 1;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.answer_input {
+  width: 40px;
+  display: block;
+}
+
+.answer_input__inactive {
+  display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+

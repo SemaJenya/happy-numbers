@@ -5,7 +5,10 @@ import s from 'classnames';
 
 function App() {
 
-
+  const arrayForHelp = [];
+  for (let i = 1; i < 5; i++) {
+    arrayForHelp.push(i)
+  }
 
   const [counter, setCounter] = useState(1)
   const [myInput, setMyInput] = useState({
@@ -24,10 +27,10 @@ function App() {
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [inputColor, setInputColor] = useState('answer_input')
 
-  const inputRef = useRef(null); 
+  const inputRef = useRef(null);
 
   useEffect(() => {
-    inputRef.current.focus(); 
+    inputRef.current.focus();
 
   }, [myArray]);
 
@@ -40,8 +43,6 @@ function App() {
     })
     setIsDisabledButton(false);
   }
-
-
 
   const handleClickButton = (e) => {
     e.preventDefault();
@@ -95,7 +96,7 @@ function App() {
         return item
       }))
       setInputColor('answer_input_red');
-      setTimeout(()=> {
+      setTimeout(() => {
         setInputColor('answer_input')
       }, 1000)
     }
@@ -111,24 +112,34 @@ function App() {
   return (
     <div className="App">
       <form className='form'>
+        <div className='form_container'>
+          {myArray?.map((element, index) => {
+            return (
+              <div className='example_container' key={index}>
+                <div className={myArray.length > 1 ? 'example_new ' : 'example'} >
+                  <p className='multiplication'>{`${element.firstNum} x ${element.secondNum} = ${element.isRightAnswer ?
+                    (element.firstNum * element.secondNum) : ''}`}</p>
 
-        {myArray?.map((element, index) => {
-          return (
-            <div className={myArray.length > 1 ? 'example_new ' :  'example'} key={index}>
-              <p className='multiplication'>{`${element.firstNum} x ${element.secondNum} = ${element.isRightAnswer ?
-                (element.firstNum * element.secondNum) : ''}`}</p>
+                  <input
+                    className={element.isRightAnswer ? 'answer_input__inactive' : inputColor}
+                    type='number'
+                    id={element.id}
+                    onChange={(e) => handleChange(e)}
+                    ref={inputRef}
+                  />
+                </div>
+                <div className='help_container'>
+                  {arrayForHelp.map((item, index) =>
+                    <div className='help' key={`${index}-help`}></div>
+                  )}
+                </div>
 
-              <input
-                className={element.isRightAnswer ? 'answer_input__inactive' : inputColor}
-                type='number'
-                id={element.id}
-                onChange={(e) => handleChange(e)}
-                ref={inputRef}
-              >
-              </input >
-            </div>)
+              </div>
 
-        })}
+            )
+
+          })}
+        </div>
 
         <button className={isDisabledButton || !inputValue ?
           "button_disabled" :
@@ -140,7 +151,7 @@ function App() {
                 s('button', 'button_over') :
                 'button'}
           disabled={(isDisabledButton || !inputValue) ? true : false}
-          type='submit'
+          type='button'
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onClick={handleClickButton}

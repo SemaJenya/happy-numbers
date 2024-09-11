@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SemaJenya/happy-numbers/static/css/main.5a9f567a.css",
+    "main.js": "/SemaJenya/happy-numbers/static/js/main.f0aead83.js",
+    "static/js/453.7d741d64.chunk.js": "/SemaJenya/happy-numbers/static/js/453.7d741d64.chunk.js",
+    "index.html": "/SemaJenya/happy-numbers/index.html",
+    "main.5a9f567a.css.map": "/SemaJenya/happy-numbers/static/css/main.5a9f567a.css.map",
+    "main.f0aead83.js.map": "/SemaJenya/happy-numbers/static/js/main.f0aead83.js.map",
+    "453.7d741d64.chunk.js.map": "/SemaJenya/happy-numbers/static/js/453.7d741d64.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a9f567a.css",
+    "static/js/main.f0aead83.js"
+  ]
+}

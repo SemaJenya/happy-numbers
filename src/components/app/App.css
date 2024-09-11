@@ -80,7 +80,31 @@
 .answer_input {
   width: 40px;
   display: block;
+  color: black;
 }
+
+
+.answer_input_red {
+  width: 40px;
+  display: block;
+  color: red;
+}
+
+
+/* .answer_input_wrong {
+  width: 40px;
+  display: block;
+  color: black;
+  animation-delay: 0s;
+  animation-duration: 1s;
+  animation-name: delayChangeColor;
+}
+
+@keyframes delayChangeColor {
+  to {
+    background-color: red;
+  }
+} */
 
 .answer_input__inactive {
   display: none;

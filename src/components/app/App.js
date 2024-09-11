@@ -22,11 +22,13 @@ function App() {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
   const [isMouseOver, setIsMouseOver] = useState(false);
+  const [inputColor, setInputColor] = useState('answer_input')
 
   const inputRef = useRef(null); 
 
   useEffect(() => {
     inputRef.current.focus(); 
+
   }, [myArray]);
 
 
@@ -85,20 +87,25 @@ function App() {
     }
 
     else {
-      console.log('uncorrect answer bbbbb');
+      // console.log('uncorrect answer bbbbb');
       setMyArray(myArray.map((item) => {
         if (item.id == counter) {
           return { ...item, isRightAnswer: false }
         }
         return item
       }))
+      setInputColor('answer_input_red');
+      setTimeout(()=> {
+        setInputColor('answer_input')
+      }, 1000)
     }
 
     setIsMouseDown(false);
     setIsCorrectAnswer(false);
+
+
   }
 
-  console.log(isMouseOver, 'isMouseOver');
 
 
   return (
@@ -107,16 +114,16 @@ function App() {
 
         {myArray?.map((element, index) => {
           return (
-            <div className={myArray.length > 1 ? 'example_new ' : 'example'} key={index}>
+            <div className={myArray.length > 1 ? 'example_new ' :  'example'} key={index}>
               <p className='multiplication'>{`${element.firstNum} x ${element.secondNum} = ${element.isRightAnswer ?
                 (element.firstNum * element.secondNum) : ''}`}</p>
+
               <input
-                className={element.isRightAnswer ? 'answer_input__inactive' : 'answer_input'}
+                className={element.isRightAnswer ? 'answer_input__inactive' : inputColor}
                 type='number'
                 id={element.id}
                 onChange={(e) => handleChange(e)}
                 ref={inputRef}
-
               >
               </input >
             </div>)
@@ -133,7 +140,6 @@ function App() {
                 s('button', 'button_over') :
                 'button'}
           disabled={(isDisabledButton || !inputValue) ? true : false}
-          // style={buttonColor}
           type='submit'
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
